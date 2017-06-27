@@ -35,11 +35,11 @@
                     Footer
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
-                        <p:submenu label="Resources">
+                        <p:submenu label="Menu">
                             <p:menuitem value="Home" url="home.xhtml" />
-                            <p:menuitem value="#{login.validarUsername} está logado" />
+                            <p:menuitem value="Login" url="login.xhtml" />
                             <p:menuitem value="Register" url="register.xhtml" />
                             <p:menuitem value="Listar" url="listar.xhtml" />
                             <p:menuitem value="Glossario" url="glossario.xhtml" />
@@ -50,15 +50,17 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
+                    <p:dataTable var="rem" style="border-style: none;" value=" ">
+                        <p:column>
+                            <h:outputText value=" " />
+                        </p:column>
+
+                        <p:column>
+                            <h:outputText value=" " />
+                        </p:column>
+                        
+                    </p:dataTable>
                     
-                    <h:form id="geral">
-
-                        <h:outputText value="Nome do Item: "/><br />
-                        <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
-
-                        <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
-
-                    </h:form>
                 </p:layoutUnit>
 
             </p:layout>
@@ -67,3 +69,4 @@
 
     </f:view>
 </html>
+
