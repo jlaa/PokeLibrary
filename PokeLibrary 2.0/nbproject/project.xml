@@ -70,6 +70,10 @@
                <_0:file>${file.reference.BootsFaces-OSP-1.1.1-dist-default.jar}</_0:file>
                <_0:path-in-war>WEB-INF/lib</_0:path-in-war>
             </_0:library>
+            <_0:library dirs="200">
+               <_0:file>${file.reference.primefaces-5.3.jar}</_0:file>
+               <_0:path-in-war>WEB-INF/lib</_0:path-in-war>
+            </_0:library>
          </_0:web-module-libraries>
          <_0:web-module-additional-libraries/>
          <_0:source-roots>

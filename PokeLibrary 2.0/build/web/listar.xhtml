@@ -1,49 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
-    <h:head>
-        <title>PokeLibrary</title>
-    </h:head>
-    <h:body>
-        <b:navBar brand="PokeLibrary" brandHref="#" inverse="true">
-            <b:navbarLinks>
-                <b:navLink value="Home" href="home.xhtml"></b:navLink>
-                <b:navLink value="Login" href="login.xhtml"></b:navLink>
-                <b:navLink value="Register" href="register.xhtml"></b:navLink>        
-                <b:navLink value="Listar" href="listar.xhtml"></b:navLink>
-                <b:navLink value="Glossario" href="glossario.hxtml"></b:navLink>            
-            </b:navbarLinks>
-        </b:navBar>
-        <h:graphicImage url="imagens/Pokelibrary.png"/>
-        <br/>
-        <h:form rendered="#{listar.listarItens() == null}">
-            <h:outputLabel value="#{listar.nomedoitem}"/>
-            <nbsp/>  
-            <h:outputLabel value="#{listar.descricao}" />
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
-            <ui:repeat value="#{listar.localizacao}" var="localizacao">
-                #{localizacao.descricaoLoc} <nbsp/>
-                #{localizacao.formas} <nbsp/>
-                #{localizacao.loc} <nbsp/>  
-            </ui:repeat> 
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Bem Vindo ao Pokelibrary</title>
+                <style>
+                    #geral {
+                        position:absolute;
+                        top:50%;
+                        left:50%;
+                        margin-left:-150px;
+                        margin-top:-50px;
+                        text-align:center;
+                    }
+                </style>
+            </f:facet>
+        </h:head>
 
-            <ui:repeat value="#{listar.preco}" var="preco">
-                #{preco.preco} <nbsp/>              
-            </ui:repeat>
-            <ui:repeat value="#{listar.versao}" var="versao">
-                #{versao.versao}             
-            </ui:repeat>
-            <br /> 
+        <h:body>
 
-        </h:form>    
-    </h:body>
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <p:graphicImage url="imagens/Pokelibrary.png" width="350px" height="95px"/>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header=" " collapsible="true">
+                    <p:menu>
+
+                        <p:submenu label="Menu">
+                            <p:menuitem value="Home" url="home.xhtml" />
+                            <p:menuitem value="Login" url="login.xhtml" />
+                            <p:menuitem value="Register" url="register.xhtml" />
+                            <p:menuitem value="Listar" url="listar.xhtml" />
+                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p:dataTable var="rem" style="border-style: none;" value=" ">
+                        <p:column>
+                            <h:outputText value=" " />
+                        </p:column>
+
+                        <p:column>
+                            <h:outputText value=" " />
+                        </p:column>
+                        
+                    </p:dataTable>
+                    
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
 </html>
+

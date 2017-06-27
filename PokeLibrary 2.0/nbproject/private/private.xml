@@ -5,10 +5,14 @@
       <group>
          <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/web/homeLogado.xhtml</file>
          <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/src/java/model/Item.java</file>
-         <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/web/home.xhtml</file>
          <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/web/listar.xhtml</file>
+         <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/web/login.xhtml</file>
+         <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/web/registerCompleto.xhtml</file>
          <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/src/java/beans/listarBeans.java</file>
+         <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/web/glossario.xhtml</file>
+         <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/src/java/beans/loginBeans.java</file>
          <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/src/java/beans/registerBeans.java</file>
+         <file>file:/C:/Users/LucasPC/Documents/NetBeansProjects/PokeLibrary%202.0/web/register.xhtml</file>
       </group>
    </open-files>
 </project-private>
