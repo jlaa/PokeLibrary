@@ -13,16 +13,28 @@ and open the template in the editor.
         <title>PokeLibrary</title>
     </h:head>
     <h:body>
-      <b:navBar brand="PokeLibrary" brandHref="#" inverse="true">
+        <b:navBar brand="PokeLibrary" brandHref="#" inverse="true">
             <b:navbarLinks>
                 <b:navLink value="Home" href="home.xhtml"></b:navLink>
                 <b:navLink value="Login" href="login.xhtml"></b:navLink>
                 <b:navLink value="Register" href="register.xhtml"></b:navLink>        
                 <b:navLink value="Listar" href="listar.xhtml"></b:navLink>
-                <b:navLink value="Register" href="register.xhtml"></b:navLink>
                 <b:navLink value="Glossario" href="glossario.hxtml"></b:navLink>            
             </b:navbarLinks>
         </b:navBar>
+        <h:graphicImage url="imagens/Pokelibrary.png"/>
+        <br/>
+        <h:form>
+            <h:outputLabel value="Nome do Item"/>
+            <br/>
+            <h:inputText value="#{pesquisar.nome}"/>
+            <br/>
+            <h:outputLabel value="Preco do Item"/>
+            <br/>
+            <h:inputText value="#{pesquisar.preco}"/>
+            <br/>
+            <h:commandButton action="#{pesquisar.procurar}" value="procurar"/>
+        </h:form>    
     </h:body>
 </html>
 

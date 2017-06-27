@@ -4,6 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -13,7 +14,7 @@ and open the template in the editor.
         <title>PokeLibrary</title>
     </h:head>
     <h:body>
-    <b:navBar brand="PokeLibrary" brandHref="#" inverse="true">
+        <b:navBar brand="PokeLibrary" brandHref="#" inverse="true">
             <b:navbarLinks>
                 <b:navLink value="Home" href="home.xhtml"></b:navLink>
                 <b:navLink value="Login" href="login.xhtml"></b:navLink>
@@ -22,15 +23,27 @@ and open the template in the editor.
                 <b:navLink value="Glossario" href="glossario.hxtml"></b:navLink>            
             </b:navbarLinks>
         </b:navBar>
-        <h:form>
-            <h:graphicImage url="imagens/Pokelibrary.png"/>
-            <br/>
-     
-            <h:outputLabel value="#{login.validarUsername} está logado"/>
-            <br/>
-            <h:commandButton action="home" value="Deslogar"/>
-            <br/>
-         </h:form>
-        
+        <h:graphicImage url="imagens/Pokelibrary.png"/>
+        <br/>
+        <h:form rendered="#{listar.listarItens() == null}">
+            <h:outputLabel value="#{listar.nomedoitem}"/>
+            <nbsp/>  
+            <h:outputLabel value="#{listar.descricao}" />
+
+            <ui:repeat value="#{listar.localizacao}" var="localizacao">
+                #{localizacao.descricaoLoc} <nbsp/>
+                #{localizacao.formas} <nbsp/>
+                #{localizacao.loc} <nbsp/>  
+            </ui:repeat> 
+
+            <ui:repeat value="#{listar.preco}" var="preco">
+                #{preco.preco} <nbsp/>              
+            </ui:repeat>
+            <ui:repeat value="#{listar.versao}" var="versao">
+                #{versao.versao}             
+            </ui:repeat>
+            <br /> 
+
+        </h:form>    
     </h:body>
 </html>

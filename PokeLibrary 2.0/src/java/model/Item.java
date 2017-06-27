@@ -36,6 +36,7 @@ public class Item implements Serializable{
                 @JoinColumn(name = "ID_VERSAO")
     })
     private List<Versao> versao;
+    
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "Item_has_localizacao", joinColumns = {
@@ -65,22 +66,56 @@ public class Item implements Serializable{
         this.descricao = Descricao;
         
     }   
-    public String getNome()
-    {
-        return this.nomedoitem;
-    }
+  
 
     public String getDescricao()
     {
         return this.descricao;
     }
-    public void setNome(String nomedoitem)
-    {
-        this.nomedoitem=nomedoitem;
-    }
+  
     public void setDescricao(String descricao)
     {
         this.descricao=descricao;
+    }
+    
+    public String getNomedoitem() {
+        return nomedoitem;
+    }
+
+    public void setNomedoitem(String nomedoitem) {
+        this.nomedoitem = nomedoitem;
+    }
+
+    public List<Versao> getVersao() {
+        return versao;
+    }
+
+    public void setVersao(List<Versao> versao) {
+        this.versao = versao;
+    }
+
+    public List<Localizacao> getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(List<Localizacao> localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public List<Preco> getPreco() {
+        return preco;
+    }
+
+    public void setPreco(List<Preco> preco) {
+        this.preco = preco;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
    
 
