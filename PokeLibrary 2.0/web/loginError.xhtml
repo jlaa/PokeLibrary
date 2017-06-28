@@ -35,9 +35,9 @@
                     Footer
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
-                        <p:submenu label="Resources">
+                        <p:submenu label="Menu">
                             <p:menuitem value="Home" url="home.xhtml" />
                             <p:menuitem value="Login" url="login.xhtml" />
                             <p:menuitem value="Register" url="register.xhtml" />
@@ -48,29 +48,31 @@
 
                     </p:menu>
                 </p:layoutUnit>
-                <h:form>
-                    <h:outputLabel value="Usuário ou Senha estão erradas!"/>
-                    <br/>
-                    <h:outputLabel value="#{login.username}:"/>
-                    <br/>
-                    <h:inputText value="#{login.validarUsername}" id="username" 
-                                 size="20" required="true" 
-                                 requiredMessage="O username deve ser informado"
-                                 />
-                    <br/>
-                    <h:outputLabel value="#{login.password}:"/>
-                    <br/>
+                <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
 
-                    <h:inputSecret value="#{login.validarPassword}" id="password" 
-                                   size="20" required="true" 
-                                   requiredMessage="O password deve ser informado"
-                                   validatorMessage="O password deve ter entre 6 e 20 caracteres"                           >
-                        <f:validateLength minimum="6" maximum="20"/>
-                    </h:inputSecret>
-                    <br/>
-                    <h:commandButton action="#{login.validarUsuario()}" value="logar"/>
-                    <br/>          
-                </h:form>
+                    <h:form>
+                        <h:outputLabel value="Usuário ou Senha estão erradas!"/>
+                        <br/>
+                        <h:outputLabel value="#{login.username}:"/>
+                        <br/>
+                        <h:inputText value="#{login.validarUsername}" id="username" 
+                                     size="20" required="true" 
+                                     requiredMessage="O username deve ser informado"
+                                     />
+                        <br/>
+                        <h:outputLabel value="#{login.password}:"/>
+                        <br/>
+
+                        <h:inputSecret value="#{login.validarPassword}" id="password" 
+                                       size="20" required="true" 
+                                       requiredMessage="O password deve ser informado"
+                                       validatorMessage="O password deve ter entre 6 e 20 caracteres"                           >
+                            <f:validateLength minimum="6" maximum="20"/>
+                        </h:inputSecret>
+                        <br/>
+                        <h:commandButton action="#{login.validarUsuario()}" value="logar"/>
+                        <br/>          
+                    </h:form>
                 </p:layoutUnit>
 
             </p:layout>

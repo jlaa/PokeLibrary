@@ -37,10 +37,7 @@
 
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
-<<<<<<< HEAD
 
-=======
->>>>>>> 6ea10c5256812e742bd4636321a8105e754ace4c
                         <p:submenu label="Menu">
                             <p:menuitem value="Home" url="home.xhtml" />
                             <p:menuitem value="Login" url="login.xhtml" />
@@ -54,13 +51,26 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <p:dataTable var="rem" style="border-style: none;" value=" ">
-                        <p:column>
-                            <h:outputText value=" " />
+                    <p:dataTable var="rem" style="border-style: none;" value="#{listar.listarItens()} ">
+                         <p:column headerText="Nome do Item">
+                             <h:outputText value="#{listar.nomedoitem} " />
                         </p:column>
 
-                        <p:column>
-                            <h:outputText value=" " />
+                        <p:column headerText="Descrição do Item">
+                            <h:outputText value="#{listar.descricao} " />
+                        </p:column>
+                        
+                        <p:column headerText="Versão do Item">
+                            <h:outputText value="#{listar.versao.get(0).versao} " />
+                        </p:column>
+
+                        <p:column headerText="Localizacao mais comum">
+                            <h:outputText value="#{listar.localizacao.get(index).loc} " />
+                        </p:column>
+                        
+                        
+                        <p:column headerText="Preço do Item">
+                             <h:outputText value="#{listar.preco.get(0).preco} " />
                         </p:column>
                         
                     </p:dataTable>

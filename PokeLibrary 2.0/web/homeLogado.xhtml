@@ -35,43 +35,38 @@
                     Footer
                 </p:layoutUnit>
 
-<<<<<<< HEAD
-                <p:layoutUnit position="west" size="175" header=" " collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Menu">
-                            <p:menuitem value="Home" url="home.xhtml" />
-                            <p:menuitem value="#{login.validarUsername} está logado" url="#" />
-=======
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Resources">
-                            <p:menuitem value="Home" url="home.xhtml" />
-                            <p:menuitem value="#{login.validarUsername} está logado" />
->>>>>>> 6ea10c5256812e742bd4636321a8105e754ace4c
-                            <p:menuitem value="Register" url="register.xhtml" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
 
-                        </p:submenu>
 
-                    </p:menu>
-                </p:layoutUnit>
+                            <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                                <p:menu>
+                                    <p:submenu label="Resources">
+                                        <p:menuitem value="Home" url="home.xhtml" />
+                                        <p:menuitem value="#{login.validarUsername} está logado" url="#" />
 
-                <p:layoutUnit position="center">
-                    
-                    <h:form id="geral">
+                                        <p:menuitem value="Register" url="register.xhtml" />
+                                        <p:menuitem value="Listar" url="listar.xhtml" />
+                                        <p:menuitem value="Glossario" url="glossario.xhtml" />
 
-                        <h:outputText value="Nome do Item: "/><br />
-                        <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
+                                    </p:submenu>
 
-                        <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
+                                </p:menu>
+                            </p:layoutUnit>
 
-                    </h:form>
-                </p:layoutUnit>
+                            <p:layoutUnit position="center">
 
-            </p:layout>
+                                <h:form id="geral">
 
-        </h:body>
+                                    <h:outputText value="Nome do Item: "/><br />
+                                    <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
 
-    </f:view>
-</html>
+                                    <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
+
+                                </h:form>
+                            </p:layoutUnit>
+
+                            </p:layout>
+
+                            </h:body>
+
+                            </f:view>
+                            </html>

@@ -43,7 +43,7 @@ public class listarBeans {
       
     }
     
-    public void listarItens()
+    public List<Item> listarItens()
     {
        ItemDao itemDao=new ItemDao();
        List<Item> item =itemDao.listarItem();
@@ -55,6 +55,7 @@ public class listarBeans {
           localizacao= item.get(i).getLocalizacao();
           preco = item.get(i).getPreco();
        }
+       return item;
             
     }
     

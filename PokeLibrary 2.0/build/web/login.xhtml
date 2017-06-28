@@ -35,9 +35,11 @@
                     Footer
                 </p:layoutUnit>
 
+
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
                         <p:submenu label="Menu">
+
                             <p:menuitem value="Home" url="home.xhtml" />
                             <p:menuitem value="Login" url="login.xhtml" />
                             <p:menuitem value="Register" url="register.xhtml" />
@@ -51,12 +53,17 @@
 
                 <p:layoutUnit position="center">
 
+
                     <h:form id="geral">
                         <h:outputText value="Username: "/><br />
                         <p:inputText value="#{login.validarUsername}" placeholder = "Username" required="true"/><br></br>
                         <h:outputText value="Senha: "/><br />
                         <p:password value="#{login.validarPassword}" placeholder = "Senha" required="true"/><br></br>
                         <p:commandButton action="#{login.validarUsuario()}" value="Submit" id="botao"/>
+
+                    
+                    
+                   
 
                     </h:form>
                 </p:layoutUnit>
