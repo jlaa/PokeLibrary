@@ -5,6 +5,7 @@
  */
 package beans;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -20,7 +21,7 @@ import model.Versao;
  */
 @ManagedBean(name = "listar")
 @RequestScoped
-public class listarBeans {
+public class listarBeans implements Serializable {
 
     
     private int id;  

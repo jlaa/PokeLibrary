@@ -51,30 +51,40 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <p:dataTable var="rem" style="border-style: none;" value="#{listar.listarItens()} ">
-                         <p:column headerText="Nome do Item">
-                             <h:outputText value="#{listar.nomedoitem} " />
+                    <p:dataTable var="rem"  style="border-style: none;" value="#{listar.listarItens()} ">
+
+                        <p:column headerText="Nome do Item">
+                            <h:outputText value="#{listar.nomedoitem} " />
                         </p:column>
 
                         <p:column headerText="Descrição do Item">
                             <h:outputText value="#{listar.descricao} " />
                         </p:column>
-                        
-                        <p:column headerText="Versão do Item">
-                            <h:outputText value="#{listar.versao.get(0).versao} " />
+
+                        <p:column headerText="Versão do Item">                            
+                            <ui:repeat var="indice" value="#{listar.versao}"> 
+                                
+                                <h:outputText value="#{indice.versao} " />
+                            </ui:repeat>
                         </p:column>
 
+
                         <p:column headerText="Localizacao mais comum">
-                            <h:outputText value="#{listar.localizacao.get(index).loc} " />
+                            <ui:repeat var="indice" value="#{listar.localizacao}"> 
+                                <h:outputText value="#{indice.loc} " />
+                            </ui:repeat>
                         </p:column>
-                        
-                        
+
+
                         <p:column headerText="Preço do Item">
-                             <h:outputText value="#{listar.preco.get(0).preco} " />
+                            <ui:repeat var="indice" value="#{listar.preco}"> 
+                                <h:outputText value="#{indice.preco} " />
+                            </ui:repeat>
                         </p:column>
-                        
+
+
                     </p:dataTable>
-                    
+
                 </p:layoutUnit>
 
             </p:layout>

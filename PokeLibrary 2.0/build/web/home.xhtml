@@ -32,13 +32,16 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h:form>
+                        <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
+                       
+                    </h:form>
                 </p:layoutUnit>
-
+                
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
                         <p:submenu label="Menu">
-                            <p:menuitem value="Home" url="home.xhtml" />
+                            <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
                             <p:menuitem value="Login" url="login.xhtml" />
                             <p:menuitem value="Register" url="register.xhtml" />
                             <p:menuitem value="Listar" url="listar.xhtml" />
@@ -55,7 +58,6 @@
 
                         <h:outputText value="Nome do Item: "/><br />
                         <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
-
                         <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
 
                     </h:form>
