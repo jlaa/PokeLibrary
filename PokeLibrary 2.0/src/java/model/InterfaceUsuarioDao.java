@@ -12,5 +12,5 @@ package model;
 public interface InterfaceUsuarioDao
 {
     public abstract void adicionar(String NomeUsuario, String Password, String Email);
-    public abstract boolean authentication(String username, String password);
+    public abstract Usuario Autenticacao(String username, String password);
 }

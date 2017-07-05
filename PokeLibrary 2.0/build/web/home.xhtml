@@ -34,26 +34,35 @@
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
                     <h:form>
                         <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
-                       
+
                     </h:form>
                 </p:layoutUnit>
-                
+
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
-                    <p:menu>
+                    <p:menu rendered="#{login.user ==null}">                       
                         <p:submenu label="Menu">
                             <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" />
-                            <p:menuitem value="Register" url="register.xhtml" />
+                            <p:menuitem value="Login" url="login.xhtml" rendered="#{login.user == null}"/>
+                            <p:menuitem value="Register" url="register.xhtml" rendered="#{login.user ==null}" />
                             <p:menuitem value="Listar" url="listar.xhtml" />
                             <p:menuitem value="Glossario" url="glossario.xhtml" />
-
                         </p:submenu>
-
                     </p:menu>
+                    <p:menu rendered="#{login.user !=null}">
+                        <p:submenu label="Menu">
+                            <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
+                            <p:menuitem value="Cadastrar Item" url="CadastrarItem.xhtml"/>    
+                            <p:menuitem value="Listar" url="listar.xhtml" />
+                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                        </p:submenu>    
+                    </p:menu>
+                    <h:form>
+                        <h:commandButton value="Sair" action="#{login.doLogout()}" rendered="#{login.user !=null}"/>
+                    </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    
+
                     <h:form id="geral">
 
                         <h:outputText value="Nome do Item: "/><br />

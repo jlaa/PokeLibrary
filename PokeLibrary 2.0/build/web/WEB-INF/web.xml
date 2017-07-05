@@ -16,10 +16,19 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            60
         </session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>home.xhtml</welcome-file>
     </welcome-file-list>
+      <!--  login filter -->
+  <filter>
+      <filter-name>LoginFilter</filter-name>
+      <filter-class>model.LoginFilter</filter-class>    
+  </filter>
+  <filter-mapping>
+      <filter-name>LoginFilter</filter-name>
+      <url-pattern>/restricted/*</url-pattern>
+  </filter-mapping>
 </web-app>

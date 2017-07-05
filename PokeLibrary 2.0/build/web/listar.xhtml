@@ -36,18 +36,27 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
-                    <p:menu>
-
+                    <p:menu rendered="#{login.user ==null}">                       
                         <p:submenu label="Menu">
-                            <p:menuitem value="Home" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" />
-                            <p:menuitem value="Register" url="register.xhtml" />
+                            <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
+                            <p:menuitem value="Login" url="login.xhtml" rendered="#{login.user == null}"/>
+                            <p:menuitem value="Register" url="register.xhtml" rendered="#{login.user ==null}" />
+                            <p:menuitem value="Listar" url="listar.xhtml" />
+                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                        </p:submenu>
+                    </p:menu>
+                    <p:menu rendered="#{login.user !=null}">
+                        <p:submenu label="Menu">
+                            <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
+                            <p:menuitem value="Cadastrar Item" url="CadastrarItem.xhtml"/>    
                             <p:menuitem value="Listar" url="listar.xhtml" />
                             <p:menuitem value="Glossario" url="glossario.xhtml" />
 
-                        </p:submenu>
-
-                    </p:menu>
+                        </p:submenu>    
+                    </p:menu>    
+                    <h:form>
+                        <h:commandButton value="Sair" action="#{login.doLogout()}" rendered="#{login.user !=null}"/>
+                    </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
@@ -63,7 +72,7 @@
 
                         <p:column headerText="Versão do Item">                            
                             <ui:repeat var="indice" value="#{listar.versao}"> 
-                                
+
                                 <h:outputText value="#{indice.versao} " />
                             </ui:repeat>
                         </p:column>

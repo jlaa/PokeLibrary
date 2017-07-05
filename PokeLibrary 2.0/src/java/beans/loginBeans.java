@@ -8,7 +8,10 @@ package beans;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import model.SessionContext;
 import model.Usuario;
+import model.UsuarioDao;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -33,7 +36,6 @@ public class loginBeans implements Serializable {
 
     private String valido;
 
-    private boolean logar;
 
     /**
      * Creates a new instance of loginBeans
@@ -42,6 +44,10 @@ public class loginBeans implements Serializable {
         UsernameText = "Digite aqui o seu username";
         PasswordText = "Digite aqui o seu password";
 
+    }
+
+    public Usuario getUser() {
+        return (Usuario) SessionContext.getInstance().getUsuarioLogado();
     }
 
     public String getUsername() {
@@ -82,20 +88,22 @@ public class loginBeans implements Serializable {
 
     public String validarUsuario() {
 
-        Usuario usuario = new Usuario(validarUsername, validarPassword);
-        logar = usuario.Authentication();
-        if (logar == true) {
-            return "homeLogado";
+        UsuarioDao usuario = new UsuarioDao();
+        Usuario user = usuario.Autenticacao(validarUsername, validarPassword);
+        if (user == null) {
+            FacesContext.getCurrentInstance().validationFailed();
+            return "loginError";
         }
-        return "loginError";
+        SessionContext.getInstance().setAttribute("usuarioLogado", user);
+
+        return "home.xhtml?faces-redirect=true";
     }
 
-    public boolean getLogar() {
-        return logar;
+    public String doLogout() {
+        SessionContext.getInstance().encerrarSessao();
+        return "home.xhtml?faces-redirect=true";
     }
 
-    public void setLogar(boolean logar) {
-        this.logar = logar;
-    }
+    
 
 }

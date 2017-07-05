@@ -83,14 +83,7 @@ public class Usuario implements Serializable{
         user.adicionar(username, password, email);
     }
 
-    public boolean Authentication() {
-        boolean logar = false;
-        UsuarioDao user = new UsuarioDao();
-
-        logar = user.authentication(username, password);
-
-        return logar;
-    }
+   
 
     public int getId() {
         return id;

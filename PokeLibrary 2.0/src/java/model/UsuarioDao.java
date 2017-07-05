@@ -45,12 +45,13 @@ public class UsuarioDao implements InterfaceUsuarioDao {
     }
     
     
-    public boolean authentication(String username, String password) {
+    @Override
+    public Usuario Autenticacao(String username, String password) {
         boolean retorno = false;
 
         EntityManager em = null;
         EntityTransaction et = null;
-        Usuario user;
+        Usuario user= new Usuario();
         try {
 
             em = emf.createEntityManager();
@@ -60,8 +61,8 @@ public class UsuarioDao implements InterfaceUsuarioDao {
             query.setParameter(1, username);
             query.setParameter(2, password);           
             user=query.getSingleResult();
-            if(user.getUsername().equals(username) && user.getPassword().equals(password)){
-                retorno = true;
+            if(user !=null){
+                return user;
             }
             et.commit();
         } catch (Exception ex) {
@@ -75,6 +76,6 @@ public class UsuarioDao implements InterfaceUsuarioDao {
             }
             
         }
-        return retorno;
+        return user;
     }
 }
