@@ -9,7 +9,7 @@ import model.Preco;
 import model.Usuario;
 import model.Versao;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-07-04T17:33:18")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-07-10T10:39:23")
 @StaticMetamodel(Item.class)
 public class Item_ { 
 
