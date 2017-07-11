@@ -22,9 +22,28 @@ public class ItemDao implements InterfaceDaoItem {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("PokeLibrary");
 
     @Override
-    public int AdicionarItem(Item item, int id) {
-        //modificar depois
-        return 0;
+    public boolean AdicionarItem(Item item) {
+        EntityManager em = null;
+        EntityTransaction et = null;
+        List<Item> items = new ArrayList();
+        try {
+
+            em = emf.createEntityManager();
+            et = em.getTransaction();
+            et.begin();
+            em.persist(item);
+            et.commit();
+        } catch (Exception ex) {
+            if (et != null) {
+                et.rollback();
+            }
+            return false;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return true;
     }
 
     public void pesquisarItem() {
@@ -33,14 +52,14 @@ public class ItemDao implements InterfaceDaoItem {
 
     public List<Item> listarItem() {
         EntityManager em = null;
-        EntityTransaction et = null;     
+        EntityTransaction et = null;
         List<Item> items = new ArrayList();
         try {
 
             em = emf.createEntityManager();
             et = em.getTransaction();
             et.begin();
-            TypedQuery<Item> query = em.createQuery("SELECT i from Item i ", Item.class);           
+            TypedQuery<Item> query = em.createQuery("SELECT i from Item i ", Item.class);
             items = query.getResultList();
             et.commit();
         } catch (Exception ex) {
@@ -53,5 +72,26 @@ public class ItemDao implements InterfaceDaoItem {
             }
         }
         return items;
+    }
+
+    public void removeItem(Integer id) {
+        EntityManager em = null;
+        EntityTransaction et = null;
+        try {
+            em = emf.createEntityManager();
+            et = em.getTransaction();
+            et.begin();
+            Item item = em.find(Item.class, id);
+            em.remove(item);
+            et.commit();
+        } catch (Exception ex) {
+            if (et != null) {
+                et.rollback();
+            }
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 }

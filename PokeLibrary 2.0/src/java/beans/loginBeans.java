@@ -90,7 +90,7 @@ public class loginBeans implements Serializable {
 
         UsuarioDao usuario = new UsuarioDao();
         Usuario user = usuario.Autenticacao(validarUsername, validarPassword);
-        if (user == null) {
+        if (user.getUsername() == null) {
             FacesContext.getCurrentInstance().validationFailed();
             return "loginError";
         }

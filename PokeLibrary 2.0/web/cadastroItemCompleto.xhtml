@@ -4,23 +4,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
 
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Bem Vindo ao Pokelibrary</title>
-                <style>
-                    #geral {
-                        position:absolute;
-                        top:50%;
-                        left:50%;
-                        margin-left:-150px;
-                        margin-top:-50px;
-                        text-align:center;
-                    }
-                </style>
+               
             </f:facet>
         </h:head>
 
@@ -33,22 +23,10 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    <h:form>
-                        <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
-
-                    </h:form>
+                    Footer
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
-                    <p:menu rendered="#{login.user ==null}">                       
-                        <p:submenu label="Menu">
-                            <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" rendered="#{login.user == null}"/>
-                            <p:menuitem value="Register" url="register.xhtml" rendered="#{login.user ==null}" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
-                        </p:submenu>
-                    </p:menu>
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
@@ -57,19 +35,13 @@
                             <p:menuitem value="Glossario" url="glossario.xhtml" />
                         </p:submenu>    
                     </p:menu>
-                    <h:form>
-                        <p:commandButton value="Sair" action="#{login.doLogout()}" rendered="#{login.user !=null}" />
-                    </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-
                     <h:form id="geral">
-
-                        <h:outputText value="Nome do Item: "/><br />
-                        <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
-                        <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
-
+                        <h:outputLabel value="Cadastro realizado com sucesso"/>
+                        <br/>
+                        <h:commandLink action="home" value="Clique aqui para voltar a página inicial"/>
                     </h:form>
                 </p:layoutUnit>
 
@@ -79,4 +51,3 @@
 
     </f:view>
 </html>
-

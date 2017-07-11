@@ -4,7 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
+
 
     <f:view contentType="text/html">
         <h:head>
@@ -37,18 +37,8 @@
                         <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
 
                     </h:form>
-                </p:layoutUnit>
-
+                </p:layoutUnit>               
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
-                    <p:menu rendered="#{login.user ==null}">                       
-                        <p:submenu label="Menu">
-                            <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" rendered="#{login.user == null}"/>
-                            <p:menuitem value="Register" url="register.xhtml" rendered="#{login.user ==null}" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
-                        </p:submenu>
-                    </p:menu>
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
@@ -62,13 +52,21 @@
                     </h:form>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="center">
-
+                <p:layoutUnit position="center" header="Registrar Item" style="text-align: center">
+                    
                     <h:form id="geral">
 
                         <h:outputText value="Nome do Item: "/><br />
-                        <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
-                        <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
+                        <h:inputText value="#{registerItemBeans.nomedoitem}"/>
+
+                        <br/>
+                        <br />
+                        <h:outputText value="Descrição do Item: "/><br />
+                        <h:inputTextarea value="#{registerItemBeans.descricao}" />             
+
+                        <br/>
+                        <br />
+                        <p:commandButton action="#{registerItemBeans.adicionarItem()}" value="Continuar Cadastro" id="botao"/>
 
                     </h:form>
                 </p:layoutUnit>

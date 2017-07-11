@@ -93,4 +93,22 @@ public class Usuario implements Serializable{
         this.id = id;
     }
 
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public List<Glossario> getGlossario() {
+        return glossario;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
+
+    public void setGlossario(List<Glossario> glossario) {
+        this.glossario = glossario;
+    }
+    
+        
+
 }

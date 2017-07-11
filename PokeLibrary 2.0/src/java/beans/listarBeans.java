@@ -9,11 +9,13 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import model.Item;
 import model.ItemDao;
 import model.Localizacao;
 import model.Preco;
 import model.Versao;
+import model.Usuario;
 
 /**
  *
@@ -23,44 +25,45 @@ import model.Versao;
 @RequestScoped
 public class listarBeans implements Serializable {
 
-    
-    private int id;  
-   
-    private String nomedoitem;   
-    
+    private int id;
+
+    private String nomedoitem;
+
     private String descricao;
-    
+
     private List<Versao> versao;
-  
+
     private List<Localizacao> localizacao;
-    
+
     private List<Preco> preco;
+    
+    private List<Item> item;
+    
+    private List<Usuario> usuarios;
 
     /**
      * Creates a new instance of listarBeans
      */
-    public listarBeans()
-    {
-      
+    public listarBeans() {
+        ItemDao itemDao = new ItemDao();
+        item = itemDao.listarItem();
+        for (int i = 0; i < item.size(); i++) {
+            nomedoitem = item.get(i).getNomedoitem();
+            descricao = item.get(i).getDescricao();
+            versao = item.get(i).getVersao();
+            localizacao = item.get(i).getLocalizacao();
+            preco = item.get(i).getPreco();
+        }
     }
     
-    public List<Item> listarItens()
+    public void removeItem(Integer id)
     {
-       ItemDao itemDao=new ItemDao();
-       List<Item> item =itemDao.listarItem();
-       for(int i=0;i<item.size();i++)
-       {
-          nomedoitem = item.get(i).getNomedoitem();
-          descricao = item.get(i).getDescricao();
-          versao = item.get(i).getVersao();
-          localizacao= item.get(i).getLocalizacao();
-          preco = item.get(i).getPreco();
-       }
-       return item;
-            
+        ItemDao itemDao = new ItemDao();
+        itemDao.removeItem(id);        
     }
+
     
-     public String getNomedoitem() {
+    public String getNomedoitem() {
         return nomedoitem;
     }
 
@@ -99,7 +102,7 @@ public class listarBeans implements Serializable {
     public void setPreco(List<Preco> preco) {
         this.preco = preco;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -107,8 +110,22 @@ public class listarBeans implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
+    public List<Item> getItem() {
+        return item;
+    }
+
+    public void setItem(List<Item> item) {
+        this.item = item;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
     
 
 }

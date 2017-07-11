@@ -4,23 +4,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
+
 
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Bem Vindo ao Pokelibrary</title>
-                <style>
-                    #geral {
-                        position:absolute;
-                        top:50%;
-                        left:50%;
-                        margin-left:-150px;
-                        margin-top:-50px;
-                        text-align:center;
-                    }
-                </style>
+         
             </f:facet>
         </h:head>
 
@@ -37,18 +28,8 @@
                         <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
 
                     </h:form>
-                </p:layoutUnit>
-
+                </p:layoutUnit>  
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
-                    <p:menu rendered="#{login.user ==null}">                       
-                        <p:submenu label="Menu">
-                            <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" rendered="#{login.user == null}"/>
-                            <p:menuitem value="Register" url="register.xhtml" rendered="#{login.user ==null}" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
-                        </p:submenu>
-                    </p:menu>
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
@@ -66,9 +47,32 @@
 
                     <h:form id="geral">
 
-                        <h:outputText value="Nome do Item: "/><br />
-                        <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
-                        <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
+                        <h:outputText value="Versao" /><br />
+                        <p:selectOneMenu id="remedio" value="#{registerItemBeans.versaoDoitem}" style="width:150px">
+                            <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Red" itemValue="red" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Green" itemValue="green" noSelectionOption="true" />
+                        </p:selectOneMenu>
+                        <br/>
+                        <br />
+                        <h:outputText value="Localização Mais Comum: "/><br />
+                        <h:inputText value="#{registerItemBeans.localizacaocomum}"/>  
+                        <br/>
+                        <br />
+                        <h:outputText value="Localização Detalhada: "/><br />
+                        <h:inputTextarea value="#{registerItemBeans.localizacaoDetalhada}"/>  
+                        <br/>
+                        <br />
+                        <h:outputText value="Forma de Chegar: "/><br />
+                        <h:inputTextarea value="#{registerItemBeans.formasdechegar}"/>  
+                        <br/>
+                        <br />                        
+                        <h:outputText value="Preço desse Item nessa Localização: "/><br />
+                        <p:inputText placeholder='100' value="#{registerItemBeans.precoDoItem}"/>  
+                        <br/>
+                        <br />
+                        <p:commandButton action="#{registerItemBeans.cadastrarItem()}" value="Finalizar Cadastro" />
+                        <p:commandButton action="#{registerItemBeans.adicionarNovamente()}" value="Cadastrar Novos dados"/>
 
                     </h:form>
                 </p:layoutUnit>

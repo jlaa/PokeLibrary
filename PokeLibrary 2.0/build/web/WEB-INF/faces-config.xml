@@ -19,6 +19,7 @@
         <locale-config>
             <default-locale>pt_BR</default-locale>
             <supported-locale>en_US</supported-locale>
+            <supported-locale>pt_BR</supported-locale>
         </locale-config>
         <resource-bundle>
             <base-name>Messages.Messages</base-name>

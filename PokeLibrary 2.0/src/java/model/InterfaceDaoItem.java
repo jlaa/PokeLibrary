@@ -5,15 +5,12 @@
  */
 package model;
 
-
-
 /**
  *
  * @author LucasPC
  */
-public interface InterfaceDaoItem 
-{
-   
-    public  int AdicionarItem(Item item,int id);
-    
+public interface InterfaceDaoItem {
+
+    public boolean AdicionarItem(Item item);
+
 }

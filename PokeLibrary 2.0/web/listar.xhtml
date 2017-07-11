@@ -48,54 +48,58 @@
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
-                            <p:menuitem value="Cadastrar Item" url="CadastrarItem.xhtml"/>    
+                            <p:menuitem value="Cadastrar Item" url="cadastrarItem.xhtml"/>    
                             <p:menuitem value="Listar" url="listar.xhtml" />
                             <p:menuitem value="Glossario" url="glossario.xhtml" />
 
                         </p:submenu>    
                     </p:menu>    
                     <h:form>
-                        <p:commandButton value="Sair" action="#{login.doLogout()}" rendered="#{login.user !=null}" />
+                        <p:commandButton value="Sair" action="#{login.doLogout()}" icon="fa fa-fw fa-download"  rendered="#{login.user !=null}" />
                     </h:form>
-                </p:layoutUnit>
 
-                <p:layoutUnit position="center">
-                    <p:dataTable var="rem"  style="border-style: none;" value="#{listar.listarItens()} ">
+                </p:layoutUnit>
+                <p:layoutUnit position="center" id="layout">
+                    <p:dataTable id="lista" rowIndexVar="index" var="rem" style="border-style: none;" value="#{listar.item}" >  
 
                         <p:column headerText="Nome do Item">
-                            <h:outputText value="#{listar.nomedoitem} " />
+                            <p:outputLabel value="#{rem.nomedoitem}" />
                         </p:column>
 
                         <p:column headerText="Descrição do Item">
-                            <h:outputText value="#{listar.descricao} " />
+                            <p:outputLabel value="#{rem.descricao} " />
                         </p:column>
 
                         <p:column headerText="Versão do Item">                            
-                            <ui:repeat var="indice" value="#{listar.versao}"> 
-
-                                <h:outputText value="#{indice.versao} " />
+                            <ui:repeat var="indiceVersion" value="#{rem.versao}"> 
+                                <p:outputLabel value="#{indiceVersion.versao} " />
                             </ui:repeat>
                         </p:column>
 
 
                         <p:column headerText="Localizacao mais comum">
-                            <ui:repeat var="indice" value="#{listar.localizacao}"> 
-                                <h:outputText value="#{indice.loc} " />
+                            <ui:repeat var="indiceLocalizacao" value="#{rem.localizacao}"> 
+                                <h:outputText value="#{indiceLocalizacao.loc} " />
                             </ui:repeat>
                         </p:column>
 
 
                         <p:column headerText="Preço do Item">
-                            <ui:repeat var="indice" value="#{listar.preco}"> 
-                                <h:outputText value="#{indice.preco} " />
+                            <ui:repeat var="indicePreco" value="#{rem.preco}"> 
+                                <h:outputText value="#{indicePreco.preco} " />
                             </ui:repeat>
                         </p:column>
 
+                        <p:column rendered = "#{rem.usuarios.get(0).id == login.user.id}">
+                            <h:form>
+                                <p:commandButton actionListener="#{listar.removeItem(rem.id)}" value="Excluir "
+                                                  update="lista"/>
+                            </h:form>
+                        </p:column>
 
                     </p:dataTable>
 
                 </p:layoutUnit>
-
             </p:layout>
 
         </h:body>

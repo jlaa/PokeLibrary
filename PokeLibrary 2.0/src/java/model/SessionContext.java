@@ -47,7 +47,6 @@ public class SessionContext {
 
     public Object getAttribute(String nome) {
         
-        System.out.println("Valores dentro da sessão: "+currentExternalContext().getSessionMap().get(nome));
         
         return currentExternalContext().getSessionMap().get(nome);
         
