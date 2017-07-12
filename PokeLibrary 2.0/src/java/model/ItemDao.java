@@ -46,10 +46,6 @@ public class ItemDao implements InterfaceDaoItem {
         return true;
     }
 
-    public void pesquisarItem() {
-
-    }
-
     public List<Item> listarItem() {
         EntityManager em = null;
         EntityTransaction et = null;
@@ -93,5 +89,28 @@ public class ItemDao implements InterfaceDaoItem {
                 em.close();
             }
         }
+    }
+
+    public Item pesquisarItem(Integer id) {
+        EntityManager em = null;
+        EntityTransaction et = null;
+        Item item = new Item();
+        try {
+
+            em = emf.createEntityManager();
+            et = em.getTransaction();
+            et.begin();
+            item=em.find(Item.class, id);
+            et.commit();
+        } catch (Exception ex) {
+            if (et != null) {
+                et.rollback();
+            }
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return item;
     }
 }

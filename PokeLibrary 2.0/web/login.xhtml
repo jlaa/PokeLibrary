@@ -32,19 +32,20 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h:form>
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
+                    </h:form>
                 </p:layoutUnit>
-
-
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
                         <p:submenu label="Menu">
 
-                            <p:menuitem value="Home" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" />
-                            <p:menuitem value="Register" url="register.xhtml" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.home}" url="home.xhtml" />
+                            <p:menuitem value="#{msgs.login}" url="login.xhtml" />
+                            <p:menuitem value="#{msgs.register}" url="register.xhtml" />
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
 
                         </p:submenu>
 
@@ -55,15 +56,15 @@
 
 
                     <h:form id="geral">
-                        <h:outputText value="Username: "/><br />
-                        <p:inputText value="#{login.validarUsername}" placeholder = "Username" required="true"/><br></br>
-                        <h:outputText value="Senha: "/><br />
-                        <p:password value="#{login.validarPassword}" placeholder = "Senha" required="true"/><br></br>
-                        <p:commandButton action="#{login.validarUsuario()}" value="Submit" id="botao"/>
+                        <h:outputText value="#{msgs.username}"/><br />
+                        <p:inputText value="#{login.validarUsername}" placeholder = "#{msgs.username}" required="true"/><br></br>
+                        <h:outputText value="#{msgs.password}"/><br />
+                        <p:password value="#{login.validarPassword}" placeholder = "#{msgs.password}" required="true"/><br></br>
+                        <h:commandButton action="#{login.validarUsuario()}" value="#{msgs.botaoenvio}" id="botao"/>
 
-                    
-                    
-                   
+
+
+
 
                     </h:form>
                 </p:layoutUnit>

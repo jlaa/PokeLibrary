@@ -10,7 +10,7 @@
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Bem Vindo ao Pokelibrary</title>
-               
+
             </f:facet>
         </h:head>
 
@@ -23,25 +23,28 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h:form>
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
+                    </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
-                            <p:menuitem value="Cadastrar Item" url="cadastrarItem.xhtml"/>    
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.cadastroitem}" url="cadastrarItem.xhtml"/>    
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
                         </p:submenu>    
                     </p:menu>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
                     <h:form id="geral">
-                        <h:outputLabel value="Cadastro realizado com sucesso"/>
+                        <h:outputLabel value="#{msgs.mensagemsucesso}"/>
                         <br/>
-                        <h:commandLink action="home" value="Clique aqui para voltar a página inicial"/>
+                        <h:commandLink action="home" value="#{msgs.mensagemhome}"/>
                     </h:form>
                 </p:layoutUnit>
 

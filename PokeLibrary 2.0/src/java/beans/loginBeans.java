@@ -36,7 +36,6 @@ public class loginBeans implements Serializable {
 
     private String valido;
 
-
     /**
      * Creates a new instance of loginBeans
      */
@@ -103,7 +102,5 @@ public class loginBeans implements Serializable {
         SessionContext.getInstance().encerrarSessao();
         return "home.xhtml?faces-redirect=true";
     }
-
-    
 
 }

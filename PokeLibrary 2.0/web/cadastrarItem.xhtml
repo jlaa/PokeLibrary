@@ -34,39 +34,39 @@
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
                     <h:form>
-                        <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
-
-                    </h:form>
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
+                       </h:form>
                 </p:layoutUnit>               
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
-                            <p:menuitem value="Cadastrar Item" url="cadastrarItem.xhtml"/>    
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.cadastroitem}" url="cadastrarItem.xhtml"/>    
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
                         </p:submenu>    
                     </p:menu>
                     <h:form>
-                        <p:commandButton value="Sair" action="#{login.doLogout()}" rendered="#{login.user !=null}" />
+                        <p:commandButton value="#{msgs.botaosair}" action="#{login.doLogout()}" rendered="#{login.user !=null}" />
                     </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center" header="Registrar Item" style="text-align: center">
-                    
+
                     <h:form id="geral">
 
-                        <h:outputText value="Nome do Item: "/><br />
+                        <h:outputText value="#{msgs.nomeitem}"/><br />
                         <h:inputText value="#{registerItemBeans.nomedoitem}"/>
 
                         <br/>
                         <br />
-                        <h:outputText value="Descrição do Item: "/><br />
+                        <h:outputText value="#{msgs.descricaoitem}"/><br />
                         <h:inputTextarea value="#{registerItemBeans.descricao}" />             
 
                         <br/>
                         <br />
-                        <p:commandButton action="#{registerItemBeans.adicionarItem()}" value="Continuar Cadastro" id="botao"/>
+                        <p:commandButton action="#{registerItemBeans.adicionarItem()}" value="#{msgs.continuecadastro}" id="botao"/>
 
                     </h:form>
                 </p:layoutUnit>

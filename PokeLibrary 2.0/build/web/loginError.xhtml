@@ -32,17 +32,19 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h:form>
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
+                    </h:form>
                 </p:layoutUnit>
-
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
                         <p:submenu label="Menu">
-                            <p:menuitem value="Home" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" />
-                            <p:menuitem value="Register" url="register.xhtml" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.home}" url="home.xhtml" />
+                            <p:menuitem value="#{msgs.login}" url="login.xhtml" />
+                            <p:menuitem value="#{msgs.register}" url="register.xhtml"  />
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
 
                         </p:submenu>
 
@@ -51,7 +53,7 @@
                 <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
 
                     <h:form>
-                        <h:outputLabel value="Usuário ou Senha estão erradas!"/>
+                        <h:outputLabel value="#{msgs.mensagemerro}"/>
                         <br/>
                         <h:outputLabel value="#{login.username}:"/>
                         <br/>
@@ -70,7 +72,7 @@
                             <f:validateLength minimum="6" maximum="20"/>
                         </h:inputSecret>
                         <br/>
-                        <h:commandButton action="#{login.validarUsuario()}" value="logar"/>
+                        <h:commandButton action="#{login.validarUsuario()}" value="#{msgs.botaoenvio}"/>
                         <br/>          
                     </h:form>
                 </p:layoutUnit>

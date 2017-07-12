@@ -11,7 +11,7 @@
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Bem Vindo ao Pokelibrary</title>
-         
+         <link href="css/paginas.css" rel="stylesheet" type="text/css" /> 
             </f:facet>
         </h:head>
 
@@ -25,17 +25,17 @@
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
                     <h:form>
-                        <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
-
-                    </h:form>
-                </p:layoutUnit>  
-                <p:layoutUnit position="west" size="175" header=" " collapsible="true">
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
+                       </h:form>
+                </p:layoutUnit>    
+                <p:layoutUnit position="west" size="175" header="#{msgs.bemvindo}" collapsible="true">
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
-                            <p:menuitem value="Cadastrar Item" url="cadastrarItem.xhtml"/>    
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.cadastroitem}" url="CadastrarItem.xhtml"/>     
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
                         </p:submenu>    
                     </p:menu>
                     <h:form>
@@ -68,7 +68,9 @@
                         <br/>
                         <br />                        
                         <h:outputText value="Preço desse Item nessa Localização: "/><br />
-                        <p:inputText placeholder='100' value="#{registerItemBeans.precoDoItem}"/>  
+                        <p:inputText value="#{registerItemBeans.precoDoItem}"  >
+                            <f:convertNumber maxFractionDigits="2" minFractionDigits="2" minIntegerDigits="3" maxIntegerDigits="4"/>
+                        </p:inputText>   
                         <br/>
                         <br />
                         <p:commandButton action="#{registerItemBeans.cadastrarItem()}" value="Finalizar Cadastro" />

@@ -9,41 +9,33 @@ import java.io.Serializable;
 import java.util.Locale;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author joao_dev
  */
-@ManagedBean
+@ManagedBean (name="idiomaBean")
 @SessionScoped
 public class IdiomaBean implements Serializable {
 
-    /**
-     * Creates a new instance of IdiomaBean
-     */
-    public IdiomaBean() {
-    }
+   private Locale currentLocale = new Locale("pt", "BR");
 
-    private static final long serialVersionUID = 1L;
+ public void englishLocale() {
+  UIViewRoot viewRoot = FacesContext.getCurrentInstance().getViewRoot();
+  currentLocale = Locale.US;
+  viewRoot.setLocale(currentLocale);
+ }
 
-    private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+ public void portugueseLocale() {
+  UIViewRoot viewRoot = FacesContext.getCurrentInstance().getViewRoot();
+  currentLocale = new Locale("pt", "BR");
+  viewRoot.setLocale(currentLocale);
+ }
 
-    public Locale getLocale() {
-
-        return locale;
-
-    }
-
-    public String getLanguage() {
-        return locale.getLanguage();
-
-    }
-
-    public String changeLanguage(String language,String country) {
-        locale = new Locale(language,country);        
-        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale(language,country));
-        return " ";
-    }
+ public Locale getCurrentLocale() {
+  return currentLocale;
+ }
 
 }

@@ -4,13 +4,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
+
 
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Bem Vindo ao Pokelibrary</title>
+                <title>Pokelibrary</title>
                 <style>
                     #geral {
                         position:absolute;
@@ -21,6 +21,7 @@
                         text-align:center;
                     }
                 </style>
+                <link href="css/paginas.css" rel="stylesheet" type="text/css" /> 
             </f:facet>
         </h:head>
 
@@ -29,36 +30,36 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    <p:graphicImage url="imagens/Pokelibrary.png" width="350px" height="95px"/>
+                    <p:graphicImage url="imagens/Pokelibrary.png" width="350px" height="85px"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
                     <h:form>
-                        <h:commandLink value="Ingles" action="#{idiomaBean.changeLanguage('en','US')}"/>
-
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
                     </h:form>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header=" " collapsible="true">
+                <p:layoutUnit position="west" size="175" header="#{msgs.bemvindo}" collapsible="true">
                     <p:menu rendered="#{login.user ==null}">                       
                         <p:submenu label="Menu">
-                            <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" rendered="#{login.user == null}"/>
-                            <p:menuitem value="Register" url="register.xhtml" rendered="#{login.user ==null}" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.home}" url="home.xhtml" />
+                            <p:menuitem value="#{msgs.login}" url="login.xhtml" rendered="#{login.user == null}"/>
+                            <p:menuitem value="#{msgs.register}" url="register.xhtml" rendered="#{login.user ==null}" />
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
                         </p:submenu>
                     </p:menu>
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
-                            <p:menuitem value="Cadastrar Item" url="cadastrarItem.xhtml"/>    
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.cadastroitem}" url="cadastrarItem.xhtml"/>    
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
                         </p:submenu>    
                     </p:menu>
                     <h:form>
-                        <p:commandButton value="Sair" action="#{login.doLogout()}" rendered="#{login.user !=null}" />
+                        <p:commandButton value="#{msgs.botaosair}" action="#{login.doLogout()}" rendered="#{login.user !=null}" />
                     </h:form>
                 </p:layoutUnit>
 
@@ -66,9 +67,9 @@
 
                     <h:form id="geral">
 
-                        <h:outputText value="Nome do Item: "/><br />
+                        <h:outputText value="#{msgs.nomeitem}"/><br />
                         <p:inputText value="#{searchBean.cidade}" placeholder = "Item" required="true"/><br />
-                        <p:commandButton action="#{searchBean.pesquisaRemedio()}" value="Submit" id="botao" icon="fa fa-search"/>
+                        <h:commandButton action="#{searchBean.pesquisaRemedio()}" value="#{msgs.botaoenvio}" id="botao" />
 
                     </h:form>
                 </p:layoutUnit>

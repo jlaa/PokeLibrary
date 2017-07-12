@@ -6,6 +6,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -30,6 +31,8 @@ public class listarBeans implements Serializable {
     private String nomedoitem;
 
     private String descricao;
+    
+    private Item item;
 
     private List<Versao> versao;
 
@@ -37,7 +40,7 @@ public class listarBeans implements Serializable {
 
     private List<Preco> preco;
     
-    private List<Item> item;
+    private List<Item> items;
     
     private List<Usuario> usuarios;
 
@@ -46,20 +49,36 @@ public class listarBeans implements Serializable {
      */
     public listarBeans() {
         ItemDao itemDao = new ItemDao();
-        item = itemDao.listarItem();
-        for (int i = 0; i < item.size(); i++) {
-            nomedoitem = item.get(i).getNomedoitem();
-            descricao = item.get(i).getDescricao();
-            versao = item.get(i).getVersao();
-            localizacao = item.get(i).getLocalizacao();
-            preco = item.get(i).getPreco();
+        items = itemDao.listarItem();
+        for (int i = 0; i < items.size(); i++) {
+            nomedoitem = items.get(i).getNomedoitem();
+            descricao = items.get(i).getDescricao();
+            versao = items.get(i).getVersao();
+            localizacao = items.get(i).getLocalizacao();
+            preco = items.get(i).getPreco();
         }
     }
+    
+
     
     public void removeItem(Integer id)
     {
         ItemDao itemDao = new ItemDao();
         itemDao.removeItem(id);        
+    }
+    
+    public void pesquisarItem(Integer id)
+    {
+        ItemDao itemDao = new ItemDao();        
+        item=itemDao.pesquisarItem(id);
+        
+        
+        
+    }
+    
+    public Item getItem()
+    {
+        return this.item;
     }
 
     
@@ -111,12 +130,12 @@ public class listarBeans implements Serializable {
         this.id = id;
     }
 
-    public List<Item> getItem() {
-        return item;
+    public List<Item> getItems() {
+        return items;
     }
 
     public void setItem(List<Item> item) {
-        this.item = item;
+        this.items = item;
     }
 
     public List<Usuario> getUsuarios() {

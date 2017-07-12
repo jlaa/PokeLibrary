@@ -32,17 +32,19 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h:form>
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
+                    </h:form>
                 </p:layoutUnit>
-
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu>
                         <p:submenu label="Menu">
-                            <p:menuitem value="Home" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" />
-                            <p:menuitem value="Register" url="register.xhtml" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.home}" url="home.xhtml" />
+                            <p:menuitem value="#{msgs.login}" url="login.xhtml" />
+                            <p:menuitem value="#{msgs.register}" url="register.xhtml"  />
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
 
                         </p:submenu>
 
@@ -51,14 +53,14 @@
 
                 <p:layoutUnit position="center">
                     <h:form id="geral">
-                        <h:outputLabel value="Username:"/>
+                        <h:outputLabel value="#{msgs.username}"/>
                         <br/>
                         <p:inputText value="#{register.username}" id="username" 
                                      size="20" required="true" 
                                      requiredMessage="O username deve ser informado"
                                      />
                         <br/>
-                        <h:outputLabel value="Password:"/>
+                        <h:outputLabel value="#{msgs.password}"/>
                         <br/>
 
                         <h:inputSecret value="#{register.password}" id="password" 
@@ -68,11 +70,11 @@
                             <f:validateLength minimum="6" maximum="20"/>
                         </h:inputSecret>
                         <br/>
-                        <h:outputLabel value="Email:"/>
+                        <h:outputLabel value="#{msgs.email}"/>
                         <br/>
                         <h:inputText value="#{register.email}" id="email"/>
                         <br/>
-                        <h:commandButton action="#{register.cadastrarUsuario()}" value="Confirmar"/>  
+                        <h:commandButton action="#{register.cadastrarUsuario()}" value="#{msgs.confirm}"/>  
                     </h:form>
                 </p:layoutUnit>
 

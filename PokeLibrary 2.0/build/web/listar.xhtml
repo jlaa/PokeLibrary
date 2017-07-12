@@ -32,74 +32,107 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <h:form>
+                        <h:commandButton image="imagens/United-States-Flag-1-icon1.png" value="Ingles" action="#{idiomaBean.englishLocale}"/>
+                        <h:commandButton image="imagens/Brazil-Flag-1-icon1.png" value="Portugues" action="#{idiomaBean.portugueseLocale()}"/>
+                    </h:form>
                 </p:layoutUnit>
-
                 <p:layoutUnit position="west" size="175" header=" " collapsible="true">
                     <p:menu rendered="#{login.user ==null}">                       
                         <p:submenu label="Menu">
-                            <p:menuitem value="#{msgs['menu.home']}" url="home.xhtml" />
-                            <p:menuitem value="Login" url="login.xhtml" rendered="#{login.user == null}"/>
-                            <p:menuitem value="Register" url="register.xhtml" rendered="#{login.user ==null}" />
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
+                            <p:menuitem value="#{msgs.home}" url="home.xhtml" />
+                            <p:menuitem value="#{msgs.login}" url="login.xhtml" rendered="#{login.user == null}"/>
+                            <p:menuitem value="#{msgs.register}" url="register.xhtml" rendered="#{login.user ==null}" />
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
                         </p:submenu>
                     </p:menu>
                     <p:menu rendered="#{login.user !=null}">
                         <p:submenu label="Menu">
                             <p:menuitem value="#{login.user.username}" url="alterarUsuario.xhtml"/>
-                            <p:menuitem value="Cadastrar Item" url="cadastrarItem.xhtml"/>    
-                            <p:menuitem value="Listar" url="listar.xhtml" />
-                            <p:menuitem value="Glossario" url="glossario.xhtml" />
-
+                            <p:menuitem value="#{msgs.cadastroitem}" url="cadastrarItem.xhtml"/>    
+                            <p:menuitem value="#{msgs.list}" url="listar.xhtml" />
+                            <p:menuitem value="#{msgs.glossario}" url="glossario.xhtml" />
                         </p:submenu>    
                     </p:menu>    
                     <h:form>
-                        <p:commandButton value="Sair" action="#{login.doLogout()}" icon="fa fa-fw fa-download"  rendered="#{login.user !=null}" />
+                        <p:commandButton value="Sair" action="#{login.doLogout()}" rendered="#{login.user !=null}" />
                     </h:form>
-
                 </p:layoutUnit>
-                <p:layoutUnit position="center" id="layout">
-                    <p:dataTable id="lista" rowIndexVar="index" var="rem" style="border-style: none;" value="#{listar.item}" >  
+
+                <p:layoutUnit position="center" >
+                    <p:dataTable id="lista" rowIndexVar="index" var="rem" style="border-style: none;" value="#{listar.items}" >  
 
                         <p:column headerText="Nome do Item">
-                            <p:outputLabel value="#{rem.nomedoitem}" />
-                        </p:column>
+                            <h:form>
+                                <p:commandLink action="#{listar.pesquisarItem(rem.id)}"  update=":itemDetail"  value="#{rem.nomedoitem}" oncomplete="PF('itemDialog').show()" />
+                            </h:form>
+                        </p:column>       
 
                         <p:column headerText="Descrição do Item">
                             <p:outputLabel value="#{rem.descricao} " />
                         </p:column>
 
-                        <p:column headerText="Versão do Item">                            
-                            <ui:repeat var="indiceVersion" value="#{rem.versao}"> 
-                                <p:outputLabel value="#{indiceVersion.versao} " />
-                            </ui:repeat>
-                        </p:column>
-
-
-                        <p:column headerText="Localizacao mais comum">
-                            <ui:repeat var="indiceLocalizacao" value="#{rem.localizacao}"> 
-                                <h:outputText value="#{indiceLocalizacao.loc} " />
-                            </ui:repeat>
-                        </p:column>
-
-
-                        <p:column headerText="Preço do Item">
-                            <ui:repeat var="indicePreco" value="#{rem.preco}"> 
-                                <h:outputText value="#{indicePreco.preco} " />
-                            </ui:repeat>
-                        </p:column>
-
                         <p:column rendered = "#{rem.usuarios.get(0).id == login.user.id}">
                             <h:form>
                                 <p:commandButton actionListener="#{listar.removeItem(rem.id)}" value="Excluir "
-                                                  update="lista"/>
+                                                 update=":lista"/>
+
                             </h:form>
                         </p:column>
 
                     </p:dataTable>
 
+                    <p:dialog header="Informações sobre o item" widgetVar="itemDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="itemDetail" style="text-align:center;">
+                                <p:panelGrid columns="3" rendered="#{listar.item!=null}" columnClasses="label,value">
+                                    
+                                    <ui:repeat var="indiceVersion" value="#{listar.item.versao}"> 
+                                        <h:outputText value='Versão:'/>
+                                        <br/>
+                                        <h:outputText value="#{indiceVersion.versao} " />
+                                        <br/>
+                                        <br/>
+                                    </ui:repeat>
+
+
+                                    <ui:repeat var="indiceLocalizacao" value="#{listar.item.localizacao}"> 
+                                        <p:outputLabel value='Localizacao'/>
+                                        <br/>
+                                        <h:outputText value="#{indiceLocalizacao.loc} " />
+                                        <br/>
+                                        <br/>
+                                        <p:outputLabel value='Descrição Detalhada da localizacao'/>
+                                        <br/>
+                                        <h:outputText value="#{indiceLocalizacao.descricaoLoc} " />
+                                        <br/>
+                                        <br/>
+                                        <p:outputLabel value='Formas de chegar na localização'/>
+                                        <br/>
+                                        <h:outputText value="#{indiceLocalizacao.formas} " />
+                                        <br/>
+                                        <br/>
+                                        
+                                    </ui:repeat>
+
+                                    <ui:repeat var="indicePreco" value="#{listar.item.preco}"> 
+                                        <p:outputLabel value='Preço'/>
+                                        <br/>
+                                        <h:outputText value="#{indicePreco.preco} PokéDollar " />
+                                        <br/>
+                                        <br/>
+                                        
+                                    </ui:repeat>
+
+                                </p:panelGrid>
+                            
+                        </p:outputPanel>
+                    </p:dialog>
+
+
                 </p:layoutUnit>
+
+
             </p:layout>
 
         </h:body>

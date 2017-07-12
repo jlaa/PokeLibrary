@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 11, 2017, 7:29:13 PM
+    Author     : joao_dev
+*/
+
+.ui-layout-north .ui-layout-unit-content{
+    text-align: center !important;
+    
+
+}
+.ui-layout-center .ui-layout-unit-content{
+    background-image: url("../imagens/pokenews-banner-new.png") !important;
+
+}
+.ui-layout-west .ui-layout-unit-content{
+   background-image: url("../imagens/pokemon-west.jpg") !important; 
+}
+
+.ui-layout-south .ui-layout-unit-content{
+   background-image: url("../imagens/bannerpkm1 (copy).png") !important;
+}
